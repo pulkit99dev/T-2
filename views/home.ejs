@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <div>
+                <form action="/create-task" method="post">
+               <p> <input type="string" name="description" required placeholder="Enter details"></p>
+              
+            <!-- <input type="string" name="category" placeholder="select category"> -->
+           <p> <select name="categories" id="">
+                <option value="job">job</option>
+                <option value="work">work</option>
+                <option value="play">play</option>
+                <option value="party">party</option>
+            </select>
+            </p>
+            
+            <p><input type="date" name="date" placeholder="date" required></p>
+
+            <button type="submit">Add Task</button>
+            <a href="/delete-contact">
+            <button>Delete</button>
+            </a>
+
+                </form>
+        </div>
+
+        <div>
+            <% for (let i of task) { %>
+                <ul>
+                    <li>
+                        <p><%= i.description%></p>
+                        <p><%= i.category%></p>
+                        <p><%= i.date%>  </p>     
+                    </li>
+                </ul>
+            <% } %>
+        </div>
+
+    </body>
+</html>
