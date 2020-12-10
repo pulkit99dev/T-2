@@ -1,11 +1,24 @@
 {
   "name": "t-2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pulkit",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulkit99dev/T-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pulkit99dev/T-2/issues"
+  },
+  "homepage": "https://github.com/pulkit99dev/T-2#readme",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.6"
+  }
 }
