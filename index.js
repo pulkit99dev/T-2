@@ -1,7 +1,18 @@
 const express = require('express');
 const port = 9000;
+const fs = require('fs');
+const path = require('path');
+
+//connecting to database
+let db = require('./config/mongoose')
+
+//connecting the Schema
+let task = require('./model/task');
 
 let app = express();
+
+app.use(express.urlencoded());
+
 
 // setting view engine
 app.set('view engine', 'ejs');
@@ -28,14 +39,23 @@ let taskList= [
 
 // rendering home page
 app.get('/', function(req, res){
-    res.render('home', {
-        title : 'ToDo-App',
-        task : taskList
-    }
-    )
+
+    task.find({}, function(err, tasks){
+        if(err){
+            console.log('failed to fetch');
+            return;
+        }
+        res.render('home', {
+            title : 'ToDo-App',
+            task : tasks
+        }
+        )
+    })
+
+   
 })
 
-// create-contact
+//create-task
 app.post('/create-task', function(req, res){
     task.create({
         description: req.body.description,
@@ -47,11 +67,12 @@ app.post('/create-task', function(req, res){
             console.log(`Failed`)
             return;
         }
-        console.log(newTask);
+        console.log('******',newTask);
         res.redirect('back');
     }
 
 })
+
 
 
 
